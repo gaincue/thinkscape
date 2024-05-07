@@ -9,7 +9,7 @@ import {
   Environment,
   // Instance,
   // Instances,
-  OrbitControls,
+  // OrbitControls,
   PerformanceMonitor,
   Stats,
   Text3D,
@@ -127,7 +127,7 @@ function App() {
           <color attach="background" args={["#faeb1e"]} />
           <AdaptiveDpr pixelated />
           <AdaptiveEvents />
-          <OrbitControls />
+          {/* <OrbitControls /> */}
           <Suspense>
             <TT />
             <Physics gravity={[0, 0, 0]} colliders={false}>
@@ -148,60 +148,122 @@ function TT() {
   })
 
   return (
-    <group position={[-1, 0, 0]} scale={1.5}>
-      <Center>
-        <Text3D
-          size={0.5}
-          height={0.01}
-          quaternion={camera.quaternion}
-          font="/Inter_Bold.json"
-          position={[0, 1.2, 0]}
-        >
-          THINK
-          <meshStandardMaterial color="black" />
-        </Text3D>
-        <Text3D
-          size={0.3}
-          height={0.01}
-          quaternion={camera.quaternion}
-          font="/Inter_Bold.json"
-          position={[0, 0.8, 0]}
-        >
-          OF
-          <meshStandardMaterial color="black" />
-        </Text3D>
-        <Text3D
-          size={0.3}
-          height={0.01}
-          quaternion={camera.quaternion}
-          font="/Inter_Bold.json"
-          position={[0, 0.4, 0]}
-        >
-          SIMPLE
-          <meshStandardMaterial color="black" />
-        </Text3D>
-        <Text3D
-          size={0.4}
-          height={0.01}
-          quaternion={camera.quaternion}
-          font="/Inter_Bold.json"
-          position={[0, -0.1, 0]}
-        >
-          POTENT
-          <meshStandardMaterial color="black" />
-        </Text3D>
-        <Text3D
-          size={0.5}
-          height={0.01}
-          quaternion={camera.quaternion}
-          font="/Inter_Bold.json"
-          position={[0, -0.7, 0]}
-        >
-          IDEAS
-          <meshStandardMaterial color="black" />
-        </Text3D>
-      </Center>
-    </group>
+    <>
+      <group position={[-1.5, 0, 0]} scale={1.5}>
+        <Center>
+          <Text3D
+            size={0.48}
+            height={0.01}
+            quaternion={camera.quaternion}
+            font="/BebasNeue.json"
+            position={[0, 1.2, 0]}
+          >
+            THINK
+            <meshStandardMaterial color="black" />
+          </Text3D>
+          <Text3D
+            size={0.15}
+            height={0.01}
+            letterSpacing={0.02}
+            quaternion={camera.quaternion}
+            font="/Ultra_Regular.json"
+            position={[0.43, 1, 0]}
+          >
+            OF
+            <meshStandardMaterial color="black" />
+          </Text3D>
+          <Text3D
+            size={0.15}
+            height={0.01}
+            letterSpacing={0.02}
+            quaternion={camera.quaternion}
+            font="/Ultra_Regular.json"
+            position={[0.08, 0.8, 0]}
+          >
+            SIMPLE
+            <meshStandardMaterial color="black" />
+          </Text3D>
+          <Text3D
+            size={0.15}
+            height={0.01}
+            letterSpacing={0.02}
+            quaternion={camera.quaternion}
+            font="/Ultra_Regular.json"
+            position={[0.055, 0.6, 0]}
+          >
+            POTENT
+            <meshStandardMaterial color="black" />
+          </Text3D>
+          <Text3D
+            size={0.5}
+            height={0.01}
+            quaternion={camera.quaternion}
+            font="/BebasNeue.json"
+            position={[0, 0.06, 0]}
+          >
+            IDEAS
+            <meshStandardMaterial color="black" />
+          </Text3D>
+        </Center>
+      </group>
+      <group position={[1.5, 0, 0]} scale={1.5}>
+        <Center>
+          <Text3D
+            size={0.48}
+            height={0.01}
+            quaternion={camera.quaternion}
+            font="/BebasNeue.json"
+            position={[0, 1.2, 0]}
+          >
+            SHAPE
+            <meshStandardMaterial color="black" />
+          </Text3D>
+          <Text3D
+            size={0.15}
+            height={0.01}
+            letterSpacing={0.02}
+            quaternion={camera.quaternion}
+            font="/Ultra_Regular.json"
+            position={[0.12, 1, 0]}
+          >
+            DEEPLY
+            <meshStandardMaterial color="black" />
+          </Text3D>
+          <Text3D
+            size={0.15}
+            height={0.01}
+            letterSpacing={0.02}
+            quaternion={camera.quaternion}
+            font="/Ultra_Regular.json"
+            position={[0.26, 0.8, 0]}
+          >
+            VIVID
+            <meshStandardMaterial color="black" />
+          </Text3D>
+          <Text3D
+            size={0.15}
+            height={0.01}
+            letterSpacing={0.02}
+            quaternion={camera.quaternion}
+            font="/Ultra_Regular.json"
+            position={[0.26, 0.6, 0]}
+          >
+            MIND
+            <meshStandardMaterial color="black" />
+          </Text3D>
+          <Text3D
+            size={0.5}
+            height={0.01}
+            quaternion={camera.quaternion}
+            font="/BebasNeue.json"
+            position={[0, 0.06, 0]}
+          >
+            SCAPE
+            <meshStandardMaterial color="black" />
+          </Text3D>
+        </Center>
+      </group>
+    </>
   )
 }
 
