@@ -124,12 +124,12 @@ function App() {
       >
         <PerformanceMonitor factor={0.5}>
           <Stats />
-          <color attach="background" args={["#faeb1e"]} />
+          {/* <color attach="background" args={["#faeb1e"]} /> */}
           <AdaptiveDpr pixelated />
           <AdaptiveEvents />
           {/* <OrbitControls /> */}
           <Suspense>
-            <TT />
+            {/* <TT /> */}
             <Physics gravity={[0, 0, 0]} colliders={false}>
               <Pointer />
               <Model />
