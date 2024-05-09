@@ -11,7 +11,7 @@ import {
   // Instances,
   // OrbitControls,
   PerformanceMonitor,
-  Stats,
+  // Stats,
   Text3D,
   useEnvironment,
   useGLTF,
@@ -120,10 +120,10 @@ function App() {
         camera={{
           position: [0, 0, 3],
         }}
-        frameloop="demand"
+        // frameloop="demand"
       >
         <PerformanceMonitor factor={0.5}>
-          <Stats />
+          {/* <Stats /> */}
           <color attach="background" args={["#faeb1e"]} />
           <AdaptiveDpr pixelated />
           <AdaptiveEvents />
@@ -293,7 +293,19 @@ function Model() {
   //   },
   // })
 
-  const [play] = useSound("/sfx.mp3", { volume: 0.1 })
+  const [play1] = useSound("/sound-1.wav", { volume: 0.4 })
+  const [play2] = useSound("/sound-2.wav", { volume: 0.4 })
+  const [play3] = useSound("/sound-3.wav", { volume: 0.4 })
+  const [play4] = useSound("/sound-4.wav", { volume: 0.4 })
+
+  const play = () => {
+    // randomly play from 1,2,3,4
+    const random = Math.floor(Math.random() * 4) + 1
+    if (random === 1) play1()
+    if (random === 2) play2()
+    if (random === 3) play3()
+    if (random === 4) play4()
+  }
 
   /*--- refraction start ---*/
   const envMap = useEnvironment({
