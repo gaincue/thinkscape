@@ -10,7 +10,6 @@ import {
   // Instance,
   // Instances,
   // OrbitControls,
-  PerformanceMonitor,
   // Stats,
   Text3D,
   useEnvironment,
@@ -19,6 +18,7 @@ import {
 } from "@react-three/drei"
 import { CuboidCollider, Physics, RapierRigidBody, RigidBody } from "@react-three/rapier"
 import useSound from "use-sound"
+import { useClickAnyWhere } from "usehooks-ts"
 
 THREE.ColorManagement.enabled = true
 
@@ -122,20 +122,18 @@ function App() {
         }}
         // frameloop="demand"
       >
-        <PerformanceMonitor factor={0.5}>
-          {/* <Stats /> */}
-          <color attach="background" args={["#faeb1e"]} />
-          <AdaptiveDpr pixelated />
-          <AdaptiveEvents />
-          {/* <OrbitControls /> */}
-          <Suspense>
-            <TT />
-            <Physics gravity={[0, 0, 0]} colliders={false}>
-              <Pointer />
-              <Model />
-            </Physics>
-          </Suspense>
-        </PerformanceMonitor>
+        {/* <Stats /> */}
+        <color attach="background" args={["#faeb1e"]} />
+        <AdaptiveDpr pixelated />
+        <AdaptiveEvents />
+        {/* <OrbitControls /> */}
+        <Suspense>
+          <TT />
+          <Physics gravity={[0, 0, 0]} colliders={false}>
+            <Pointer />
+            <Model />
+          </Physics>
+        </Suspense>
       </Canvas>
     </>
   )
@@ -143,7 +141,6 @@ function App() {
 
 function TT() {
   const camera = useThree((state) => {
-    console.log(state)
     return state.camera
   })
 
@@ -284,6 +281,8 @@ function Pointer({ vec = new THREE.Vector3() }) {
 
 function Model() {
   const { scene } = useGLTF("/model.gltf")
+  const canPlay = useRef(false)
+
   // const [population, setPopulation] = useState(0.5)
   // usePerformanceMonitor({
   //   // onIncline: () => {},
@@ -293,18 +292,21 @@ function Model() {
   //   },
   // })
 
+  useClickAnyWhere(() => {
+    canPlay.current = true
+  })
+
   const [play1] = useSound("/sound-1.wav", { volume: 0.1 })
   const [play2] = useSound("/sound-2.wav", { volume: 0.1 })
   const [play3] = useSound("/sound-3.wav", { volume: 0.1 })
 
   const play = () => {
-    // check if audio context can play sound
-    if (new AudioContext().state == "suspended") {
+    if (!canPlay.current) {
       return
     }
 
-    // randomly play from 1,2,3,4
-    const random = Math.floor(Math.random() * 4) + 1
+    // randomly play from 1,2,3
+    const random = Math.floor(Math.random() * 3) + 1
     if (random === 1) play1()
     if (random === 2) play2()
     if (random === 3) play3()
