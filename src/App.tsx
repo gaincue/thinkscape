@@ -75,40 +75,40 @@ THREE.ColorManagement.enabled = true
 //   metalness: 0.8,
 // }
 const materialPink = new THREE.MeshPhysicalMaterial({
-  color: 0xf00074,
-  transmission: 1.8,
+  color: 0xff6685,
+  transmission: 1,
   thickness: 100,
   roughness: 0,
   ior: 2.1,
-  reflectivity: 0.95,
-  metalness: 0.25,
+  reflectivity: 1,
+  metalness: 0.1,
 })
 const materialYellow = new THREE.MeshPhysicalMaterial({
-  color: 0xf5cc00,
+  color: 0xffdc2e,
   transmission: 1,
   thickness: 80,
   roughness: 0,
-  ior: 2.3,
+  ior: 1.8,
   reflectivity: 1,
   metalness: 0,
 })
 const materialOrange = new THREE.MeshPhysicalMaterial({
-  color: 0xf08000,
-  transmission: 1.6,
+  color: 0xff9500,
+  transmission: 1,
   thickness: 100,
-  roughness: 0.1,
-  ior: 1.7,
-  reflectivity: 0.7,
-  metalness: 0.1,
+  roughness: 0,
+  ior: 1.8,
+  reflectivity: 1,
+  metalness: 0,
 })
 const materialBlue = new THREE.MeshPhysicalMaterial({
-  color: 0x0034d1,
+  color: 0x0000eb,
   transmission: 10,
   thickness: 150,
   roughness: 0,
-  ior: 2.5,
-  reflectivity: 0.6,
-  metalness: 0.8,
+  ior: 5,
+  reflectivity: 1,
+  metalness: 0.85,
 })
 
 function App() {
