@@ -130,6 +130,7 @@ function App() {
         <Suspense>
           <TT />
           <Physics gravity={[0, 0, 0]} colliders={false}>
+            <ContainerBody />
             <Pointer />
             <Model />
           </Physics>
@@ -286,6 +287,63 @@ function TT() {
           </Text3D>
         </Center>
       </group>
+    </>
+  )
+}
+
+function ContainerBody() {
+  const viewport = useThree((state) => state.viewport)
+
+  return (
+    <>
+      <RigidBody
+        // left
+        position={[-viewport.width / 2 - 1, 0, 0]}
+        type="fixed"
+        colliders={false}
+      >
+        <CuboidCollider args={[2, viewport.height, 10]} restitution={0.5} />
+      </RigidBody>
+      <RigidBody
+        // right
+        position={[viewport.width / 2 + 1, 0, 0]}
+        type="fixed"
+        colliders={false}
+      >
+        <CuboidCollider args={[2, viewport.height, 10]} restitution={0.5} />
+      </RigidBody>
+      <RigidBody
+        // top
+        position={[0, -viewport.height, 0]}
+        type="fixed"
+        colliders={false}
+      >
+        <CuboidCollider args={[viewport.width, 3, 10]} restitution={0.5} />
+      </RigidBody>
+      <RigidBody
+        // bottom
+        position={[0, viewport.height, 0]}
+        type="fixed"
+        colliders={false}
+      >
+        <CuboidCollider args={[viewport.width, 3, 10]} restitution={0.5} />
+      </RigidBody>
+      <RigidBody
+        // front
+        position={[0, 0, 4]}
+        type="fixed"
+        colliders={false}
+      >
+        <CuboidCollider args={[viewport.width, viewport.height, 2]} restitution={0.5} />
+      </RigidBody>
+      <RigidBody
+        // back
+        position={[0, 0, -4]}
+        type="fixed"
+        colliders={false}
+      >
+        <CuboidCollider args={[viewport.width, viewport.height, 2]} restitution={0.5} />
+      </RigidBody>
     </>
   )
 }
