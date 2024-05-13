@@ -18,7 +18,7 @@ import {
 } from "@react-three/drei"
 import { CuboidCollider, Physics, RapierRigidBody, RigidBody } from "@react-three/rapier"
 import useSound from "use-sound"
-import { useClickAnyWhere } from "usehooks-ts"
+import { useClickAnyWhere, useWindowSize } from "usehooks-ts"
 
 THREE.ColorManagement.enabled = true
 
@@ -144,9 +144,35 @@ function TT() {
     return state.camera
   })
 
+  const size = useWindowSize()
+
+  const scale = useMemo(() => {
+    if (size.height >= 900) {
+      return 2
+    }
+
+    if (size.height >= 768) {
+      return 1.8
+    }
+
+    return 2
+  }, [size.height])
+
+  const gap = useMemo(() => {
+    if (size.height > 900) {
+      return 2
+    }
+
+    if (size.height >= 768) {
+      return 1.8
+    }
+
+    return 1.5
+  }, [size.height])
+
   return (
     <>
-      <group position={[-1.5, 0, 0]} scale={1.5}>
+      <group position={[-gap, 0, 0]} scale={scale}>
         <Center>
           <Text3D
             size={0.48}
@@ -203,7 +229,7 @@ function TT() {
           </Text3D>
         </Center>
       </group>
-      <group position={[1.5, 0, 0]} scale={1.5}>
+      <group position={[gap, 0, 0]} scale={scale}>
         <Center>
           <Text3D
             size={0.48}
