@@ -76,40 +76,40 @@ THREE.ColorManagement.enabled = true
 // }
 const materialPink = new THREE.MeshPhysicalMaterial({
   color: 0xff6685,
-  transmission: 1,
+  transmission: 0.8,
   thickness: 100,
   roughness: 0,
   ior: 2.1,
-  reflectivity: 1,
+  reflectivity: 0.4,
   metalness: 0.1,
-})
+});
 const materialYellow = new THREE.MeshPhysicalMaterial({
-  color: 0xffdc2e,
+  color: 0xffd500,
   transmission: 1,
   thickness: 80,
   roughness: 0,
   ior: 1.8,
   reflectivity: 1,
-  metalness: 0,
-})
+  metalness: 0
+});
 const materialOrange = new THREE.MeshPhysicalMaterial({
   color: 0xff9500,
   transmission: 1,
   thickness: 100,
   roughness: 0,
   ior: 1.8,
-  reflectivity: 1,
+  reflectivity: 0.6,
   metalness: 0,
-})
+});
 const materialBlue = new THREE.MeshPhysicalMaterial({
-  color: 0x0000eb,
-  transmission: 10,
+  color: 0x3333ff,
+  transmission: 11.2,
   thickness: 150,
   roughness: 0,
   ior: 5,
   reflectivity: 1,
   metalness: 0.85,
-})
+});
 
 function App() {
   return (
@@ -123,7 +123,7 @@ function App() {
         // frameloop="demand"
       >
         {/* <Stats /> */}
-        <color attach="background" args={["#faeb1e"]} />
+        {/* <color attach="background" args={["#faeb1e"]} /> */}
         <AdaptiveDpr pixelated />
         <AdaptiveEvents />
         {/* <OrbitControls /> */}

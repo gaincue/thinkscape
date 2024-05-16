@@ -19,3 +19,10 @@ a {
   all: unset;
   cursor: pointer;
 }
+
+#root{
+  background-color: #faeb1e;
+}
+canvas{
+  filter: contrast(1.1);
+}
