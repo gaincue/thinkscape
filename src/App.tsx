@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import * as THREE from "three"
-import { FC, PropsWithChildren, Suspense, useMemo, useRef } from "react"
+import { FC, PropsWithChildren, Suspense, useMemo, useRef, useState } from "react"
 import { Canvas, ReactThreeFiber, useFrame, useThree } from "@react-three/fiber"
 import {
   AdaptiveDpr,
@@ -18,7 +18,7 @@ import {
 } from "@react-three/drei"
 import { CuboidCollider, Physics, RapierRigidBody, RigidBody } from "@react-three/rapier"
 import useSound from "use-sound"
-import { useClickAnyWhere, useWindowSize } from "usehooks-ts"
+import { useWindowSize } from "usehooks-ts"
 
 THREE.ColorManagement.enabled = true
 
@@ -82,7 +82,7 @@ const materialPink = new THREE.MeshPhysicalMaterial({
   ior: 2.1,
   reflectivity: 0.4,
   metalness: 0.1,
-});
+})
 const materialYellow = new THREE.MeshPhysicalMaterial({
   color: 0xffd500,
   transmission: 1,
@@ -90,8 +90,8 @@ const materialYellow = new THREE.MeshPhysicalMaterial({
   roughness: 0,
   ior: 1.8,
   reflectivity: 1,
-  metalness: 0
-});
+  metalness: 0,
+})
 const materialOrange = new THREE.MeshPhysicalMaterial({
   color: 0xff9500,
   transmission: 1,
@@ -100,7 +100,7 @@ const materialOrange = new THREE.MeshPhysicalMaterial({
   ior: 1.8,
   reflectivity: 0.6,
   metalness: 0,
-});
+})
 const materialBlue = new THREE.MeshPhysicalMaterial({
   color: 0x3333ff,
   transmission: 11.2,
@@ -109,9 +109,12 @@ const materialBlue = new THREE.MeshPhysicalMaterial({
   ior: 5,
   reflectivity: 1,
   metalness: 0.85,
-});
+})
 
 function App() {
+  const canPlay = useRef(false)
+  const [hideButton, setHideButton] = useState(false)
+
   return (
     <>
       <Canvas
@@ -132,10 +135,37 @@ function App() {
           <Physics gravity={[0, 0, 0]} colliders={false}>
             <ContainerBody />
             <Pointer />
-            <Model />
+            <Model canPlay={canPlay.current} />
           </Physics>
         </Suspense>
       </Canvas>
+      {!hideButton && (
+        <button
+          id="play-button"
+          onClick={() => {
+            setHideButton(true)
+            canPlay.current = true
+          }}
+        >
+          <svg
+            height="60px"
+            width="60px"
+            version="1.1"
+            id="Layer_1"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 459 459"
+          >
+            <g>
+              <path
+                d="M229.5,0C102.751,0,0,102.751,0,229.5S102.751,459,229.5,459S459,356.249,459,229.5S356.249,0,229.5,0z M310.292,239.651
+			l-111.764,76.084c-3.761,2.56-8.63,2.831-12.652,0.704c-4.022-2.128-6.538-6.305-6.538-10.855V153.416
+			c0-4.55,2.516-8.727,6.538-10.855c4.022-2.127,8.891-1.857,12.652,0.704l111.764,76.084c3.359,2.287,5.37,6.087,5.37,10.151
+			C315.662,233.564,313.652,237.364,310.292,239.651z"
+              />
+            </g>
+          </svg>
+        </button>
+      )}
     </>
   )
 }
@@ -363,9 +393,8 @@ function Pointer({ vec = new THREE.Vector3() }) {
   )
 }
 
-function Model() {
+function Model({ canPlay }: { canPlay: boolean }) {
   const { scene } = useGLTF("/model.gltf")
-  const canPlay = useRef(false)
 
   // const [population, setPopulation] = useState(0.5)
   // usePerformanceMonitor({
@@ -376,16 +405,12 @@ function Model() {
   //   },
   // })
 
-  useClickAnyWhere(() => {
-    canPlay.current = true
-  })
-
   const [play1] = useSound("/sound-1.wav", { volume: 0.1 })
   const [play2] = useSound("/sound-2.wav", { volume: 0.1 })
   const [play3] = useSound("/sound-3.wav", { volume: 0.1 })
 
   const play = () => {
-    if (!canPlay.current) {
+    if (!canPlay) {
       return
     }
 

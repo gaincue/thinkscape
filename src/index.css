@@ -20,9 +20,32 @@ a {
   cursor: pointer;
 }
 
-#root{
-  background-color: #faeb1e;
+#root {
+  background-color: #f4c430;
 }
-canvas{
+canvas {
   filter: contrast(1.1);
+}
+
+#play-button {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  zindex: 1;
+  background: transparent;
+  border: none;
+  height: 60px;
+  width: 60px;
+  cursor: pointer;
+}
+
+#play-button svg {
+  fill: #000000;
+  transition: 0.12s ease-in-out;
+}
+
+#play-button:hover svg {
+  fill: #ffffff;
+  transition: 0.12s ease-in-out;
 }
