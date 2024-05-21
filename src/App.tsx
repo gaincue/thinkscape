@@ -332,7 +332,7 @@ function ContainerBody() {
         type="fixed"
         colliders={false}
       >
-        <CuboidCollider args={[2, viewport.height, 10]} restitution={0.5} />
+        <CuboidCollider args={[2.5, viewport.height, 10]} restitution={0.5} />
       </RigidBody>
       <RigidBody
         // right
@@ -340,7 +340,7 @@ function ContainerBody() {
         type="fixed"
         colliders={false}
       >
-        <CuboidCollider args={[2, viewport.height, 10]} restitution={0.5} />
+        <CuboidCollider args={[2.5, viewport.height, 10]} restitution={0.5} />
       </RigidBody>
       <RigidBody
         // top
@@ -348,7 +348,7 @@ function ContainerBody() {
         type="fixed"
         colliders={false}
       >
-        <CuboidCollider args={[viewport.width, 3, 10]} restitution={0.5} />
+        <CuboidCollider args={[viewport.width, 3.5, 10]} restitution={0.5} />
       </RigidBody>
       <RigidBody
         // bottom
@@ -356,7 +356,7 @@ function ContainerBody() {
         type="fixed"
         colliders={false}
       >
-        <CuboidCollider args={[viewport.width, 3, 10]} restitution={0.5} />
+        <CuboidCollider args={[viewport.width, 3.5, 10]} restitution={0.5} />
       </RigidBody>
       <RigidBody
         // front
@@ -364,7 +364,7 @@ function ContainerBody() {
         type="fixed"
         colliders={false}
       >
-        <CuboidCollider args={[viewport.width, viewport.height, 2]} restitution={0.5} />
+        <CuboidCollider args={[viewport.width, viewport.height, 2.5]} restitution={0.5} />
       </RigidBody>
       <RigidBody
         // back
@@ -372,7 +372,7 @@ function ContainerBody() {
         type="fixed"
         colliders={false}
       >
-        <CuboidCollider args={[viewport.width, viewport.height, 2]} restitution={0.5} />
+        <CuboidCollider args={[viewport.width, viewport.height, 2.5]} restitution={0.5} />
       </RigidBody>
     </>
   )
