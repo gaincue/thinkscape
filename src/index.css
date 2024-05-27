@@ -21,10 +21,10 @@ a {
 }
 
 #root {
-  background-color: #f4c430;
+  background-color: #faeb1e;
 }
 canvas {
-  filter: contrast(1.1);
+  filter: contrast(1.2);
 }
 
 #play-button {
@@ -35,8 +35,8 @@ canvas {
   zindex: 1;
   background: transparent;
   border: none;
-  height: 60px;
-  width: 60px;
+  height: 66px;
+  width: 66px;
   cursor: pointer;
 }
 
